@@ -1,5 +1,5 @@
 # from book_app import app
-from pytest_app import app
+from app import app
 import json
 
 
