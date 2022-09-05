@@ -7,15 +7,15 @@ from flask_restx import Resource ,Api, fields
 from datetime import datetime
 app = Flask('__name__')
 api = Api(app)
-# resource_fields = api.model('Temperature', {
-#     'Timestamp': fields.String(),
-#     'Temp': fields.Integer(),
-#     'Notes': fields.String(),
-#     })
+resource_fields = api.model('Temperature', {
+    'Timestamp': fields.String(),
+    'Temp': fields.Integer(),
+    'Notes': fields.String(),
+    })
 @api.route('/temp<int:Temp><Notes>', endpoint='/temp') #/<Temp>,<Timestamp>,<Notes>
 @api.doc(params={'Temp':'Temprature in Degree celcius','Notes':'Description of temprature'})
 class temp(Resource):
-    # @api.doc(resource_fields)
+    @api.doc(model=resource_fields)
     def post(self,Temp,Notes):
         Timestamp=datetime.now()
         Timestamp=str(Timestamp)
